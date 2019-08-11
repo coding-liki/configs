@@ -1,4 +1,10 @@
 {
-    "vendor": "CodingLiki",
-    "version": "0.1"
+    "name":"Configs",
+    "vendor":"CodingLiki",
+    "description":"Класс для удобного подключения конфигурационных файлов",
+    "version":"0.1",
+    "repo_url":"https://github.com/coding-liki/configs.git",
+    "depends_on":[
+        "CodingLiki/Autoloader"
+    ]
 }

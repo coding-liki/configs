@@ -5,6 +5,6 @@
     "version":"0.1",
     "repo_url":"https://github.com/coding-liki/configs.git",
     "depends_on":[
-        "CodingLiki/Autoloader"
+        "CodingLiki/OoAutoloader"
     ]
 }

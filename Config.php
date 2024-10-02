@@ -1,25 +1,26 @@
 <?php
+
 namespace CodingLiki\Configs;
 
-class Config{
-    public static $config_folder = 'configs';
+class Config
+{
+    public static function read(string $name, string $rootDirectory = __DIR__ . '/../../../config'): mixed
+    {
+        if(!str_contains($name, '.')){
+            $name = "$name.$name";
+        }
+        [$fileName, $valueName] = explode('.', $name);
 
-    public static function config($name){
-        $arr = explode('.', $name);
-        if(count($arr) < 2){
-            $arr[1] = $arr[0];
+        $filePath = $rootDirectory . '/' . $fileName . '.php';
+
+        if (file_exists($filePath)) {
+            $returnedValue = include $filePath;
         }
-        $value = $arr[1];
-        $file_name = $arr[0].'.php';
-        //if(file_exists(ROOT."/".self::$config_folder."/$file_name")){
-        if(file_exists("./".self::$config_folder."/$file_name")){
-            //echo "Можем подключить конфиг";
-            //include ROOT."/".self::$config_folder."/$file_name";
-            include "./".self::$config_folder."/$file_name";
+
+        if (isset($$valueName)) {
+            return $$valueName;
         }
-        if(isset($$value)){
-            //echo "$value установлен";
-            return $$value;
-        }
+
+        return $returnedValue;
     }
 }
